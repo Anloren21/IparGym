@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ipargym.dtos.ActividadCrearDto;
 import com.ipargym.dtos.ActividadDetalleDto;
 import com.ipargym.dtos.ActividadListadoDto;
 import com.ipargym.entidades.Actividad;
@@ -45,6 +46,17 @@ public class ActividadService {
 		long plazasOcupadas = reservaRepository.countByActividadId(actividad.getId());
 
 		return Math.toIntExact(actividad.getPlazas() - plazasOcupadas);
+	}
+
+	@Transactional
+	public ActividadDetalleDto crearActividad(ActividadCrearDto dto) {
+
+		Actividad actividad = new Actividad(null, dto.nombre(), dto.descripcion(), dto.monitor(), dto.fechaHora(),
+				dto.duracionMinutos(), dto.plazas());
+
+		Actividad guardada = actividadRepository.save(actividad);
+
+		return actividadMapper.toDetalleDto(guardada, guardada.getPlazas());
 	}
 
 }
