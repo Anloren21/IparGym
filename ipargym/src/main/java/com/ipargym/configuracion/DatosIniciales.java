@@ -42,9 +42,9 @@ public class DatosIniciales implements CommandLineRunner {
 		Usuario administrador = new Usuario(null, "Administrador", "admin@ipargym.es",
 				passwordEncoder.encode("Admin123!"), Rol.ADMINISTRADOR);
 
-		Usuario ana = new Usuario(null, "Ana", "ana@ipargym.es", passwordEncoder.encode("Socio123!"), Rol.SOCIO);
+		Usuario ana = new Usuario(null, "Ana", "ana@ipargym.es", passwordEncoder.encode("Ana123!"), Rol.SOCIO);
 
-		Usuario carlos = new Usuario(null, "Carlos", "carlos@ipargym.es", passwordEncoder.encode("Socio123!"),
+		Usuario carlos = new Usuario(null, "Carlos", "carlos@ipargym.es", passwordEncoder.encode("Carlos123!"),
 				Rol.SOCIO);
 
 		usuarioRepository.saveAll(List.of(administrador, ana, carlos));
