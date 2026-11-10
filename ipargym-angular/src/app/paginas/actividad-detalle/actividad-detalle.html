@@ -1,0 +1,7 @@
+<section><a routerLink="/">← Volver a actividades</a>
+@if (actividad(); as a) { <article class="tarjeta detalle"><h1>{{ a.nombre }}</h1><p>{{ a.descripcion }}</p><p><strong>Monitor:</strong> {{ a.monitor }}</p><p><strong>Fecha:</strong> {{ a.fechaHora | date:'dd/MM/yyyy HH:mm' }}</p><p><strong>Duración:</strong> {{ a.duracionMinutos }} minutos</p><p><strong>Plazas libres:</strong> {{ a.plazasLibres }} de {{ a.plazas }}</p>
+@if (a.plazasLibres === 0) { <p class="error">Actividad completa</p> }
+<button (click)="reservar(a.id)" [disabled]="procesando()">Reservar</button></article> }
+@if (mensaje()) { <p class="exito" role="status">{{ mensaje() }}</p><a routerLink="/reservas">Ver mis reservas</a> }
+@if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+</section>

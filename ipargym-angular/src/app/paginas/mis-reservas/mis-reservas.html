@@ -1,0 +1,7 @@
+<section><h1>Mis reservas</h1>
+@if (mensaje()) { <p class="exito" role="status">{{ mensaje() }}</p> }
+@if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+@if (cargando()) { <p>Cargando reservas...</p> } @else { <div class="listado">
+@for (r of reservas(); track r.id) { <article class="tarjeta"><h2>{{ r.nombreActividad }}</h2><p>Fecha: {{ r.fechaHora | date:'dd/MM/yyyy HH:mm' }}</p><p>Reservada el: {{ r.fechaReserva | date:'dd/MM/yyyy HH:mm' }}</p><button class="boton-cancelar" (click)="cancelar(r.id)">Cancelar reserva</button></article> }
+@empty { @if (!error()) { <p>No tienes reservas todavía. <a routerLink="/">Consultar actividades</a></p> } }
+</div> }</section>

@@ -1,0 +1,8 @@
+<section><h1>Actividades de IparGym</h1><p>Consulta nuestras clases y reserva tu plaza.</p>
+@if (error()) { <p class="error">{{ error() }}</p> }
+@if (cargando()) { <p>Cargando actividades...</p> }
+@else if (!error()) { <div class="listado">
+@for (actividad of actividades(); track actividad.id) { <app-actividad-fila [actividad]="actividad" (seleccionada)="verDetalle($event)" /> }
+@empty { <p>No hay actividades disponibles.</p> }
+</div> }
+</section>

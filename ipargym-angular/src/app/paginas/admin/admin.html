@@ -1,0 +1,11 @@
+<section class="formulario"><h1>Administración</h1><h2>Crear actividad</h2>
+<form (ngSubmit)="crear()" #form="ngForm">
+<label for="nombre">Nombre</label><input id="nombre" name="nombre" [(ngModel)]="actividad.nombre" required maxlength="40" />
+<label for="descripcion">Descripción</label><textarea id="descripcion" name="descripcion" [(ngModel)]="actividad.descripcion"></textarea>
+<label for="monitor">Monitor</label><input id="monitor" name="monitor" [(ngModel)]="actividad.monitor" />
+<label for="fecha">Fecha y hora</label><input id="fecha" type="datetime-local" name="fechaHora" [(ngModel)]="actividad.fechaHora" required />
+<label for="duracion">Duración en minutos</label><input id="duracion" type="number" name="duracionMinutos" [(ngModel)]="actividad.duracionMinutos" required min="1" />
+<label for="plazas">Plazas</label><input id="plazas" type="number" name="plazas" [(ngModel)]="actividad.plazas" required min="1" />
+<button type="submit" [disabled]="form.invalid">Crear actividad</button></form>
+@if (mensaje()) { <p class="exito">{{ mensaje() }}</p> } @if (error()) { <p class="error">{{ error() }}</p> }
+</section>

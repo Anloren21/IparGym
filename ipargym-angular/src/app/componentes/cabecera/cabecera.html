@@ -1,0 +1,8 @@
+<header><a routerLink="/" class="marca">IparGym</a><nav>
+<a routerLink="/">Actividades</a>
+@if (jwt.autenticado()) {
+  <span>Hola, {{ jwt.nombre() }}</span><a routerLink="/reservas">Mis reservas</a>
+  @if (jwt.rol() === 'ADMINISTRADOR') { <a routerLink="/admin">Administración</a> }
+  <button (click)="salir()">Cerrar sesión</button>
+} @else { <a routerLink="/login">Iniciar sesión</a> }
+</nav></header>
